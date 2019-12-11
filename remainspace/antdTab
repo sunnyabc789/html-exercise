@@ -1,0 +1,21 @@
+antd tabs tabpane模式
+tabs 和 tabpane存在一层需要css选择器才能加样式的盒子
+此时 定位方案更合适
+
+<Tabs
+style={{
+  height: 'calc(100% - 44px)',
+  position: 'relative'
+}}
+>
+
+<TabPane
+         tab='按工作流调度'
+         key='flow'
+         style={{
+           position: 'absolute',
+           top: '60px',
+           bottom: '0px',
+           overflowX: 'scroll'
+         }}
+        >
