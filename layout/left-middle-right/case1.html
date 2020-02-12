@@ -1,6 +1,8 @@
 <!-- 1.左中右布局时，如果用浮动 中间未来比较难扩展内容 -->
 <!-- 2.要注意最小宽 -->
-<!-- 3.本质上还是固比固 最小宽时为固固固 -->
+<!-- 3.本质上还是固比固 最小宽时为固固固 没有最小宽则变成内容宽度的固固固-->
+<!-- 4.中间如果不给最大宽则一直往右顶 给了最大宽注意overflow:hidden -->
+<!-- 5.固定部分超宽则折行 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +32,9 @@
 </head>
 <body>
   <div class="container">
-    <div class="left">left</div>
-    <div class="middle">middle</div>
-    <div class="right">right</div>
+    <div class="left">left111111111111111111</div>
+    <div class="middle">middle111111111111111</div>
+    <div class="right">right11111111111111111</div>
   </div>
 </body>
 </html>
