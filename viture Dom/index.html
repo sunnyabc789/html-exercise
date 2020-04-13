@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
+<script>
+  let demoNode = ({
+    tagName: 'ul',
+    props: {'class': 'list'},
+    children: [
+        ({tagName: 'li', children: ['douyin']}),
+        ({tagName: 'li', children: ['toutiao']})
+    ]
+  });
+
+  class Element {
+    constructor({tagName, props, children}) {
+      //这招有点厉害
+      if(!(this instanceof Element)){
+        return new Element({tagName, props, children})
+      }
+      this.tagName = tagName
+      this.props = props || {}
+      this.children = children || []
+    }
+
+    recurChildren(arr) {
+      arr.map( i => {})
+    }
+
+    render() {
+      var el = document.createElement(this.tagName),
+      props = this.props,
+      propName,
+      propValue;
+      for(propName in props){
+        propValue = props[propName];
+        el.setAttribute(propName, propValue);
+      }
+      this.children.forEach(function(child){
+        var childEl = null;
+        if(typeof child === 'object'){
+            childEl = new Element(child).render()
+        }else{
+            childEl = document.createTextNode(child);
+        }
+        el.appendChild(childEl);
+      });
+      return el
+    }
+  }
+
+  document.getElementById('root').appendChild(new Element(demoNode).render()) 
+</script>
